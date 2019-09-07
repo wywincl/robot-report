@@ -1,3 +1,4 @@
+from __future__ import print_function
 # from xml.dom.minidom import parse
 import xml.dom.minidom as dom
 
@@ -38,6 +39,6 @@ if __name__ == "__main__":
     i = 0
     while i < len(l1):
         if l1[i][2] == u"FAIL" or l1[i][2] != l2[i][2]:
-            print "".join(l1[i]), l2[i]
+            print("".join(l1[i]), l2[i])
         i += 1
 

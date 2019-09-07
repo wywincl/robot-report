@@ -50,6 +50,7 @@ Examples:
 $ robotdiff.py output1.xml output2.xml output3.xml
 $ robotdiff.py --name Env1 --name Env2 smoke1.xml smoke2.xml
 """
+from __future__ import print_function
 
 import sys
 import os.path
@@ -65,7 +66,7 @@ def main(args):
     for path, name in zip(paths, _get_names(opts['name'], paths)):
         try:
             results.add_output(path, name)
-        except DataError, err:
+        except DataError as err:
             _exit(err, error=True)
     reporter = DiffReporter(opts['report'], opts['title'])
     reporter.report(results)
@@ -75,9 +76,9 @@ def _process_args(cliargs):
     ap = ArgumentParser(__doc__, arg_limits=(2, ))
     try:
         return ap.parse_args(cliargs)
-    except Information, msg:
+    except Information as msg:
         _exit(msg)
-    except DataError, err:
+    except DataError as err:
         _exit(err, error=True)
 
 def _get_names(names, paths):
@@ -89,9 +90,9 @@ def _get_names(names, paths):
           % (len(names), len(paths)), error=True)
 
 def _exit(msg, error=False):
-    print unicode(msg)
+    print(unicode(msg))
     if error:
-        print "\nTry --help for usage information."
+        print("\nTry --help for usage information.")
     sys.exit(int(error))
 
 
