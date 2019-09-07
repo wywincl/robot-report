@@ -96,9 +96,23 @@ class KeywordsTime(object):
     def __cmp__(self, other):
         return cmp(other.elapsed, self.elapsed)
 
+    def __eq__(self, other):
+        return other.elapsed == self.elapsed
+
+    def __ne__(self, other):
+        return other.elapsed != self.elapsed
+
     def __lt__(self, other):
         return other.elapsed < self.elapsed
 
+    def __le__(self, other):
+        return other.elapsed <= self.elapsed
+
+    def __gt__(self, other):
+        return other.elapsed > self.elapsed
+
+    def __ge__(self, other):
+        return other.elapsed >= self.elapsed
 
 def _print_results(times, shown_keywords, limit):
     s = sorted(times.keywords.values())
